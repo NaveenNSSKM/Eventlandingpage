@@ -1,0 +1,1637 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eventoz</title>
+    <link rel="shortcut icon" href="footerlogo.png" type="image/x-icon" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Dancing+Script:wght@400;700&display=swap" rel="stylesheet" />
+   <style>
+     @import url('https://fonts.googleapis.com/css2?family=Lexend+Deca&display=swap');
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+             font-family: 'Lexend Deca', 'Helvetica Neue', Helvetica, sans-serif;
+        }
+
+        body {
+            background-color: #fff5eb;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #fff5eb;
+            padding: 15px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        header.scrolled {
+            padding: 10px 0;
+            background-color: rgba(255, 245, 235, 0.95);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 40px;
+            height: 40px;
+            background-color: #ff4a7c;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 24px;
+            font-weight: bold;
+            border-radius: 8px;
+            margin-right: 10px;
+        }
+
+        .logo-text {
+            color: #293e6a;
+            font-size: 22px;
+            font-weight: 700;
+            letter-spacing: 0.5px;
+        }
+
+       
+        .cta-button {
+            background-color: #ff4a7c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: #ff2d69;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 10px rgba(255, 74, 124, 0.3);
+        }
+
+       
+
+        /* Hero Section */
+        .hero {
+            background-image: url("main-banner.jpg");
+            padding: 100px 0 100px;
+            position: relative;
+            overflow: hidden;
+            margin-top: 70px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          
+            opacity: 0.1;
+            z-index: 0;
+        }
+
+        .hero-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero-text {
+            width: 50%;
+            color: white;
+            padding-right: 30px;
+        }
+
+        .hero-text h1 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards 0.3s;
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards 0.5s;
+        }
+
+        .register-button {
+            display: inline-flex;
+            align-items: center;
+            background-color: #1e88e5;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 0.8s forwards 0.7s;
+        }
+
+        .register-button i {
+            margin-right: 8px;
+        }
+
+        .register-button:hover {
+            background-color: #1976d2;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.4);
+        }
+
+        .hero-image {
+            width: 45%;
+            position: relative;
+            opacity: 0;
+            transform: translateX(20px);
+            animation: fadeInRight 0.8s forwards 0.9s;
+        }
+
+        .hero-image img {
+            width: 100%;
+            
+        }
+
+        .flip {
+    display: inline-block;
+    animation: flipIn 1s ease-in-out forwards;
+    animation-delay: calc(var(--i, 0) * 0.2s);
+    transform-origin: bottom;
+  }
+
+  @keyframes flipIn {
+    0% {
+      transform: rotateY(45deg);
+      opacity: 0;
+    }
+    100% {
+      transform: rotateY(0deg);
+      opacity: 1;
+    }
+  }
+
+  /* Optional: stagger animation */
+  .flip:nth-child(1) { --i: 1; }
+  .flip:nth-child(2) { --i: 2; }
+  .flip:nth-child(3) { --i: 3; }
+  .flip:nth-child(4) { --i: 4; }
+  .flip:nth-child(5) { --i: 5; }
+
+        .floating-shapes div {
+            position: absolute;
+            z-index: 0;
+            opacity: 0.6;
+            animation: float 8s infinite alternate ease-in-out;
+        }
+
+        .shape1 {
+            width: 80px;
+            height: 80px;
+            background-color: rgba(255, 74, 124, 0.5);
+            border-radius: 50%;
+            top: 20%;
+            right: 10%;
+            animation-delay: 0s !important;
+        }
+
+        .shape2 {
+            width: 60px;
+            height: 60px;
+            background-color: rgba(30, 136, 229, 0.5);
+            border-radius: 50%;
+            bottom: 15%;
+            right: 20%;
+            animation-delay: 1s !important;
+        }
+
+        .shape3 {
+            width: 40px;
+            height: 40px;
+            background-color: rgba(122, 40, 251, 0.5);
+            border-radius: 50%;
+            top: 30%;
+            left: 15%;
+            animation-delay: 2s !important;
+        }
+
+        .shape4 {
+            width: 30px;
+            height: 30px;
+            background-color: rgba(0, 209, 178, 0.5);
+            border-radius: 50%;
+            bottom: 20%;
+            left: 10%;
+            animation-delay: 1.5s !important;
+        }
+
+        .chat-bubble {
+            position: absolute;
+            width: 60px;
+            height: 60px;
+            background-color: #1e88e5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 24px;
+            top: 20%;
+            right: 15%;
+            box-shadow: 0 8px 16px rgba(30, 136, 229, 0.3);
+            animation: pulse 2s infinite;
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 1.2s, pulse 2s infinite 1.2s;
+        }
+
+        .plus-icon {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            background-color: #7a28fb;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            font-size: 20px;
+            bottom: 25%;
+            right: 30%;
+            box-shadow: 0 8px 16px rgba(122, 40, 251, 0.3);
+            opacity: 0;
+            animation: fadeIn 0.5s forwards 1.5s, float 5s infinite alternate ease-in-out 1.5s;
+        }
+
+        /* About Section */
+        .about {
+            padding: 80px 0;
+            background-color: #fff5eb;
+            text-align: center;
+        }
+
+        .section-title {
+            color: #ff4a7c;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: #666;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 50px;
+            letter-spacing: 1px;
+        }
+
+        .about-content {
+            color: #555;
+            font-size: 16px;
+            line-height: 1.8;
+            margin: 0 auto 40px;
+            max-width: 800px;
+        }
+
+        .about-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .about-button {
+            display: inline-flex;
+            align-items: center;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .register-btn {
+            background-color: #ff4a7c;
+            color: white;
+        }
+
+        .register-btn:hover {
+            background-color: #ff2d69;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 74, 124, 0.3);
+        }
+
+        .purchase-btn {
+            background-color: #1e88e5;
+            color: white;
+        }
+
+        .purchase-btn:hover {
+            background-color: #1976d2;
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(30, 136, 229, 0.3);
+        }
+
+        /* Animation Keyframes */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(30, 136, 229, 0.7);
+            }
+            70% {
+                transform: scale(1.05);
+                box-shadow: 0 0 0 10px rgba(30, 136, 229, 0);
+            }
+            100% {
+                transform: scale(1);
+                box-shadow: 0 0 0 0 rgba(30, 136, 229, 0);
+            }
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(0);
+            }
+            100% {
+                transform: translateY(-15px);
+            }
+        }
+
+        /* Media Queries */
+        @media screen and (max-width: 991px) {
+            .hero-content {
+                flex-direction: column;
+            }
+
+            .hero-text {
+                width: 100%;
+                padding-right: 0;
+                margin-bottom: 50px;
+                text-align: center;
+            }
+
+            .hero-image {
+                width: 80%;
+            }
+
+            
+        }
+
+        @media screen and (max-width: 768px) {
+           
+
+            .hero {
+                padding: 150px 0 80px;
+            }
+
+            .hero-text h1 {
+                font-size: 36px;
+            }
+
+            .section-title {
+                font-size: 30px;
+            }
+
+            .about-buttons {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            
+        }
+
+        @media screen and (max-width: 576px) {
+            .container {
+                width: 90%;
+            }
+
+            .hero-text h1 {
+                font-size: 30px;
+            }
+
+            .hero-text p {
+                font-size: 14px;
+            }
+
+            .register-button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+
+           
+        }
+
+
+        /* Event Schedule */
+       .cover {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+            background-image: url('main-banner.jpg');
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Header section */
+        .even {
+            text-align: center;
+            margin-bottom: 40px;
+           
+            color:#ffffff;
+            padding: 30px;
+            border-radius: 8px;
+        }
+        
+        .even h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .even p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        /* Schedule container */
+        .schedule-container {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+        
+        /* Day columns */
+        .day-column {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .day-header {
+           background-color: white;
+            color: rgb(0, 0, 0);
+            padding: 15px;
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 8px;
+        }
+        
+        /* Event cards */
+        .event-card {
+            
+            border-radius: 8px;
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        
+        .event-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .event-top {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            cursor: pointer;
+             background-color: transparent;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .event-avatar {
+            width: 40px;
+            height: 40px;
+            background-color: #e74c3c;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            margin-right: 15px;
+            flex-shrink: 0;
+        }
+        
+        .icon-registration::before {
+            content: "R";
+            font-weight: bold;
+        }
+        
+        .icon-digital::before {
+            content: "D";
+            font-weight: bold;
+        }
+        
+        .icon-reinvent::before {
+            content: "RE";
+            font-weight: bold;
+        }
+        
+        .icon-plus::before {
+            content: "+";
+            font-weight: bold;
+        }
+        
+        .event-title {
+            flex-grow: 1;
+            font-weight: bold;
+            font-size: 1.1rem;
+            color: white;
+        }
+        
+        .event-expand {
+            width: 24px;
+            height: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            border-radius: 50%;
+            background-color: #e9ecef;
+            color: #495057;
+            transition: background-color 0.2s;
+        }
+        
+        .event-expand:hover {
+            background-color: #dee2e6;
+        }
+        
+        /* Event details section */
+        .event-details {
+            padding: 15px;
+            display: none;
+            border-top: 1px dashed #dee2e6;
+            background-color: #f8f9fa;
+        }
+        
+        .event-details p {
+            margin-bottom: 15px;
+            line-height: 1.5;
+        }
+        
+        .event-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+        
+        .event-meta-item {
+            background-color: #e9ecef;
+            padding: 8px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            color: #495057;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        
+        /* Download button */
+        .download-btn {
+            display: block;
+            margin: 0 auto;
+            padding: 12px 24px;
+            background-color: #1e88e5;
+            color: white;
+            border: none;
+            border-radius: 30px;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 20px;
+        }
+        
+        .download-btn:hover {
+            background-color: #0f71c8;
+        }
+        
+        .icon-download::before {
+            content: "↓";
+            font-weight: bold;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .schedule-container {
+                flex-direction: column;
+            }
+            
+            .cover {
+                padding: 20px;
+            }
+            
+            .even {
+                padding: 20px;
+            }
+        }
+
+        /* Speakers Section */
+        
+        .speakers-section {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            
+        }
+
+        .speakers-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .speakers-header h2 {
+            color: #ff5a87;
+            font-size: 42px;
+            margin-bottom: 10px;
+        }
+
+        .speakers-header p {
+            color: #667;
+            font-size: 16px;
+            letter-spacing: 1px;
+        }
+
+        .speakers-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .speaker-card {
+            background-color: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+            padding: 30px 20px;
+            transition: transform 0.3s ease;
+            /* Initial state for animation */
+            opacity: 0;
+            transform: translateY(-50px);
+        }
+
+       /* Animate card on hover */
+.speaker-card:hover {
+    background-color: #f6a7bc; /* New background on hover */
+    transform: translateY(-10px);
+}
+
+/* Change content color on hover */
+.speaker-card:hover .speaker-name,
+.speaker-card:hover .speaker-title,
+.speaker-card:hover .speaker-bio {
+    color: white; /* or any contrasting color */
+    transition: color 0.3s ease;
+}
+        
+        /* Animation class that will be added by JavaScript */
+        .speaker-card.animate {
+            opacity: 1;
+            transform: translateY(0);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+
+        .speaker-image {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0 auto 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .speaker-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .speaker-info {
+            text-align: center;
+        }
+
+        .speaker-name {
+            font-size: 22px;
+            font-weight: bold;
+            color: #445;
+            margin-bottom: 5px;
+        }
+
+        .speaker-title {
+            color: #889;
+            font-size: 16px;
+            margin-bottom: 15px;
+        }
+
+        .speaker-bio {
+            color: #778;
+            font-size: 14px;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+       .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 10px;
+      margin: 1rem 0;
+      padding: 0.8rem 0;
+      border-top: 1px solid #f0f0f7;
+      border-bottom: 1px solid #f0f0f7;
+    }
+
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      background-color: #f0f0f7;
+      color: black;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .social-links a:hover {
+      background-color: #1e88e5;
+      color: #fff;
+      transform: translateY(-3px);
+    }
+
+        .company-logo {
+            position: absolute;
+            top: 20px;
+            right: 50px;
+            width: 8px;
+            height: 9px;
+        }
+
+        @media (max-width: 768px) {
+            .speakers-grid {
+                grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            }
+        }
+        
+        /* Animation delay for each card */
+        .speaker-card:nth-child(1) { transition-delay: 0.1s; }
+        .speaker-card:nth-child(2) { transition-delay: 0.3s; }
+        .speaker-card:nth-child(3) { transition-delay: 0.5s; }
+        .speaker-card:nth-child(4) { transition-delay: 0.7s; }
+
+
+        /* sponsors */
+
+         .con {
+           
+            width: 100%;
+            text-align: center;
+            background-image: url('Event-banner.jpg');
+           
+          
+        }
+        
+        .title {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            color: #ffffff;
+        }
+        
+        .subtitle {
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 50px;
+            color: #ffffff;
+            opacity: 0.9;
+            
+        }
+        
+        .sponsor-category {
+            margin-bottom: 60px;
+        }
+        
+        .category-title {
+            font-size: 1.5rem;
+            margin-bottom: 40px;
+            letter-spacing: 2px;
+            color: white;
+        }
+        
+        .sponsors-row {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            
+        }
+        
+        .sponsor-logo {
+            background-color: transparent;
+            padding: 15px;
+            border-radius: 5px;
+            width: 200px;
+            height: 100px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+           
+        }
+        
+        .sponsor-logo img {
+            max-width: 100%;
+            max-height: 100%;
+            filter: brightness(0) invert(1);
+        }
+       
+
+        /* footer */
+  .footer {
+  background-image: url(footer-banner.jpg);
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: sans-serif;
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.1);
+  margin-top: 80px;
+}
+
+.footer-top {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  max-width: 1200px;
+  margin: auto;
+  padding-bottom: 1rem;
+}
+
+.footer-logo img {
+  width: 120px;
+}
+
+
+
+
+.footer-social {
+  margin: 1rem 0;
+}
+
+.footer-social a {
+  margin: 0 0.5rem;
+  font-size: 1.5rem;
+  text-decoration: none;
+  color: #ffffff;
+}
+
+
+
+
+
+.footer-social a:hover{
+  color:#ff4081 ;
+}
+
+.footer-bottom {
+  margin-top: 1rem;
+  font-size: 0.9rem;
+  color: #ffffff;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .footer-top {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .footer-nav {
+    margin-top: 1rem;
+  }
+}
+
+
+/* form register */
+
+  .page-header {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #4a5568;
+      font-weight: 500;
+      font-size: 24px;
+       
+    }
+
+    .form-container {
+      background-color: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      
+      
+        max-width: 600px;
+            margin: 0 auto;
+            padding: 10px 30px;
+    }
+
+   
+    .form-section {
+      margin-bottom: 50px;
+     margin-top: 20px;
+      
+    }
+
+    .form-section h2 {
+      font-size: 24px;
+      color: #ff4081;
+      margin-bottom: 8px;
+      font-weight: 600;
+      text-align: center;
+    }
+
+    .form-section p {
+      color: #718096;
+      font-size: 15px;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .input-row {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      flex: 1;
+      margin-bottom: 10px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 3px;
+      font-weight: 500;
+      color: #4a5568;
+      font-size: 14px;
+    }
+
+    .form-group input, .form-group select {
+      width: 100%;
+      padding: 14px 10px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+      font-size: 16px;
+      transition: border-color 0.3s, box-shadow 0.3s;
+    }
+
+    .form-group input:focus, .form-group select:focus {
+      border-color: #ff2d69;
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+      outline: none;
+    }
+
+    .form-footer {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 40px;
+    }
+
+    .btn {
+      padding: 12px 28px;
+      border-radius: 8px;
+      font-size: 16px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .btn-primary {
+      background-color: #ff2d69;
+      color: white;
+      border: none;
+    }
+
+    .btn-primary:hover {
+      background-color: #ff5a87;
+    }
+
+    .checkbox-group {
+      margin-top: 30px;
+    }
+
+    .checkbox-container {
+      display: flex;
+      align-items: flex-start;
+      margin-bottom: 12px;
+    }
+
+    .checkbox-container input[type="checkbox"] {
+      margin-right: 10px;
+      margin-top: 3px;
+      width: 18px;
+      height: 18px;
+      accent-color: #ff4081;
+    }
+
+    .checkbox-container label {
+      color: #4a5568;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .checkbox-container a {
+      color: #ff4081;
+      text-decoration: none;
+    }
+
+    .checkbox-container a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .form-container {
+        padding: 30px 20px;
+      }
+      
+      .input-row {
+        flex-direction: column;
+        gap: 12px;
+      }
+    }
+
+    /* For smaller mobile screens */
+    @media (max-width: 480px) {
+      .page-header {
+        font-size: 20px;
+      }
+      
+      .form-section h2 {
+        font-size: 20px;
+      }
+    }
+        
+    </style>
+</head>
+<body>
+    <!-- Header with Navigation -->
+    <header id="header">
+        <div class="container">
+            <nav class="navbar">
+                <a href="#" class="logo">
+                    <img src="logo.png" width="90px" height="30px" >
+                </a>
+                
+                
+                <button class="cta-button">Purchase Ticket</button>
+                
+                
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container hero-content">
+            <div class="hero-text">
+               
+                
+               <h1 >
+  <span class="flip">Big</span>
+  <span class="flip">Digital</span>
+  <span class="flip">World</span>
+  <span class="flip">Meetup</span>
+  <span class="flip">2025</span>
+</h1>
+                <p>Join Our International Family Today! Please Call us For More info.</p>
+                
+                <button class="register-button" >
+                    <a href="#form" style="text-decoration: none; color: white;">Register Now</a> 
+                </button>
+            </div>
+            
+            <div class="hero-image">
+                <img src="banner.png" alt="Business person using tablet">
+            </div>
+        </div>
+        
+        <div class="floating-shapes">
+            <div class="shape1"></div>
+            <div class="shape2"></div>
+            <div class="shape3"></div>
+            <div class="shape4"></div>
+        </div>
+        
+        
+     
+    </section>
+
+    <!-- About Section -->
+    <section class="about">
+        <div class="container">
+            <h2 class="section-title">Big Digital Meetup</h2>
+            <p class="section-subtitle">About Digital Meetup Conference 2025</p>
+            
+            <p class="about-content">
+                Join us for the Big Digital World Meetup 2025, where technology meets innovation. This premier event brings together industry leaders, developers, designers, and digital enthusiasts to explore the latest trends and advancements in the digital landscape. Network with professionals
+            </p>
+            
+            <div class="about-buttons">
+                <button class="about-button register-btn">
+                     <a href="#form" style="text-decoration: none;color: white;">Register Now</a>
+                </button>
+                
+            </div>
+        </div>
+    </section>
+
+
+    <!--------------------------Event Schedule------------------------------------>
+<div class="cover">
+       <div class="even">
+        <h1>Event Schedule</h1>
+        <p>A Representation of the event planning</p>
+    </div>
+
+    <div class="schedule-container">
+        <!-- Day 1 Column -->
+        <div class="day-column">
+            <div class="day-header">
+                24 June 2025
+            </div>
+
+            <!-- Registration & Breakfast -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-registration"></span>
+                    </div>
+                    <div class="event-title">Registration & Breakfast</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+                <div class="event-details">
+                    <p>Proident nulla proident cerebral networks via magnetic coupling molecular domains connected via causal paths without creating label dynamical sets.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                             7:30-8am - 9:00am
+                        </div>
+                     
+                    </div>
+                </div>
+            </div>
+
+            <!-- Digital Event Information -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-digital"></span>
+                    </div>
+                    <div class="event-title">Digital Event Information</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+            </div>
+
+          
+           
+
+            <!-- Registration & Breakfast -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-registration"></span>
+                    </div>
+                    <div class="event-title">Registration & Breakfast</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+            </div>
+
+          
+
+
+           
+
+        </div>
+
+        <!-- Day 2 Column -->
+        <div class="day-column">
+            <div class="day-header">
+                26 July 2025
+            </div>
+
+            <!-- Registration & Breakfast -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-registration"></span>
+                    </div>
+                    <div class="event-title">Registration & Breakfast</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+                <div class="event-details">
+                    <p>Proident nulla proident cerebral networks via magnetic coupling molecular domains connected via causal paths without creating label dynamical sets.</p>
+                    <div class="event-meta">
+                        <div class="event-meta-item">
+                             7:30-8am - 9:00am
+                        </div>
+                        
+                    </div>
+                </div>
+            </div>
+
+
+            
+
+          
+            
+
+            <!-- Digital Event Information -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-digital"></span>
+                    </div>
+                    <div class="event-title">Digital Event Information</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+            </div>
+
+            <!-- Reinventing Experiences -->
+            <div class="event-card">
+                <div class="event-top">
+                    <div class="event-avatar">
+                        <span class="icon-reinvent"></span>
+                    </div>
+                    <div class="event-title">Reinventing Experiences</div>
+                    <div class="event-expand"><span class="icon-plus"></span></div>
+                </div>
+            </div>
+
+
+          
+        </div>
+    </div>
+</div>
+    <button class="download-btn">
+        <span class="icon-download"></span> Download Schedule
+    </button>
+
+    <!-------------------------------Speakers----------------------------------------->
+
+     <section class="speakers-section">
+        <div class="speakers-header">
+            <h2>Our Speakers</h2>
+            <p>Meet Our World's Leading Speakers</p>
+        </div>
+        
+        <div class="speakers-grid">
+            <!-- Speaker Card 1 -->
+            <div class="speaker-card">
+                <div class="company-logo">
+                    <img src="speakerlogo.png" alt="Company Logo 1">
+                </div>
+                <div class="speaker-image">
+                    <img src="speakers2.png" alt="Zisnad Q. Alex">
+                </div>
+                <div class="speaker-info">
+                    <h3 class="speaker-name">Zisnad Q. Alex</h3>
+                    <p class="speaker-title">Speaker</p>
+                    <p class="speaker-bio">Completey conceplua high quality nice markes rather than long term impact human capital</p>
+                      <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+                </div>
+            </div>
+
+            <!-- Speaker Card 2 -->
+            <div class="speaker-card">
+                <div class="company-logo">
+                    <img src="speakerlogo1.png" alt="Company Logo 2">
+                </div>
+                <div class="speaker-image">
+                    <img src="speakers3.png" alt="Zisnad Q. Alex">
+                </div>
+                <div class="speaker-info">
+                    <h3 class="speaker-name">Zisnad Q. Alex</h3>
+                    <p class="speaker-title">Speaker</p>
+                    <p class="speaker-bio">Completey conceplua high quality nice markes rather than long term impact human capital</p>
+                      <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+                </div>
+            </div>
+
+            <!-- Speaker Card 3 -->
+            <div class="speaker-card">
+                <div class="company-logo">
+                    <img src="speakerlogo2.png" alt="Company Logo 3">
+                </div>
+                <div class="speaker-image">
+                    <img src="speakers4.png" alt="Zisnad Q. Alex">
+                </div>
+                <div class="speaker-info">
+                    <h3 class="speaker-name">Zisnad Q. Alex</h3>
+                    <p class="speaker-title">Speaker</p>
+                    <p class="speaker-bio">Completey conceplua high quality nice markes rather than long term impact human capital</p>
+                     <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+          </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </section>
+
+    <!---------------------------Sponsors--------------------------------->
+
+     <div class="con">
+        <h1 class="title">Event Sponsors</h1>
+        <p class="subtitle">Check Who Makes The Event Possible</p>
+        
+        <div class="sponsor-category">
+            <h2 class="category-title">GOLD SPONSOR</h2>
+            <div class="sponsors-row">
+                <div class="sponsor-logo">
+                    <img src="gold-1.png" alt="Hats Place Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="gold-2.png" alt="Hair & Beard Barbershop Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="gold-3.png" alt="Fashion Store Logo">
+                </div>
+            </div>
+        </div>
+        
+        <div class="sponsor-category">
+            <h2 class="category-title">SILVER SPONSOR</h2>
+            <div class="sponsors-row">
+                <div class="sponsor-logo">
+                    <img src="silver-1.png" alt="Smoke Time Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="silver-2.png" alt="Bookstore Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="silver-3.png" alt="Showtime Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="silver-4.png" alt="Ocean Fish Logo">
+                </div>
+                <div class="sponsor-logo">
+                    <img src="silver-5.png" alt="Vintage Studio Logo">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-------------------------form--------------------------------->
+
+     <h1 class="page-header" id="form">Secure your spot at the Industry Innovation Summit 2025</h1>
+  
+  <div class="form-container" >
+    <form id="registrationForm" >
+      <div class="form-section">
+        <h2>Personal Information</h2>
+        <p>Please enter your contact details</p>
+        
+        <div class="input-row">
+          <div class="form-group">
+            <label for="firstName">First Name</label>
+            <input type="text" id="firstName" name="firstName" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="lastName">Last Name</label>
+            <input type="text" id="lastName" name="lastName" required>
+          </div>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="tel" id="phoneNumber" name="phoneNumber">
+        </div>
+
+        <div class="form-group">
+          <label for="company">Company</label>
+          <input type="text" id="company" name="company">
+        </div>
+        
+        <div class="checkbox-group">
+          <div class="checkbox-container">
+            <input type="checkbox" id="privacyPolicy" name="privacyPolicy" required>
+            <label for="privacyPolicy">I agree to the <a href="#">Privacy Policy</a> and consent to the processing of my personal data.</label>
+          </div>
+          
+          <div class="checkbox-container">
+            <input type="checkbox" id="marketing" name="marketing">
+            <label for="marketing">I would like to receive updates about the Industry Innovation Summit and other related events.</label>
+          </div>
+        </div>
+      </div>
+      
+      <div class="form-footer">
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+    </form>
+  </div>
+
+  
+
+<!------------------------footer------------------------------------>
+
+<footer class="footer">
+  <div class="footer-top">
+    <div class="footer-logo">
+      <a href="#" class="logo">
+        <img style="width: 30%;" src="footerlogo.png" alt="EventX Logo"><h3 style="color: white;">EVENTOZ</h3>
+      </a>
+    </div>
+  </div>
+
+
+
+  <div class="footer-social" style="text-align: center;">
+    <a href="#"><i class="fab fa-facebook-f"></i></a>
+    <a href="#"><i class="fab fa-twitter"></i></a>
+    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+    <a href="#"><i class="fab fa-instagram"></i></a>
+  </div>
+
+  <hr />
+
+  <div class="footer-bottom" style="text-align: center;">
+    <p>&copy; 2025 EventX. All rights reserved.</p>
+  </div>
+</footer>
+
+
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to check if element is in viewport
+            function isInViewport(element) {
+                const rect = element.getBoundingClientRect();
+                return (
+                    rect.top <= (window.innerHeight || document.documentElement.clientHeight) * 0.8 &&
+                    rect.bottom >= 0
+                );
+            }
+            
+            // Function to handle animation
+            function handleScrollAnimation() {
+                const speakerCards = document.querySelectorAll('.speaker-card');
+                
+                speakerCards.forEach(card => {
+                    if (isInViewport(card)) {
+                        card.classList.add('animate');
+                    }
+                });
+            }
+            
+            // Run once on load in case elements are already in view
+            handleScrollAnimation();
+            
+            // Add scroll event listener
+            window.addEventListener('scroll', handleScrollAnimation);
+        });
+    </script>
+
+    <script>
+        // Simple toggle functionality for event details
+        document.querySelectorAll('.event-expand').forEach(item => {
+            item.addEventListener('click', event => {
+                const parent = item.closest('.event-card');
+                const details = parent.querySelector('.event-details');
+                
+                if (details) {
+                    details.style.display = details.style.display === 'none' ? 'block' : 'none';
+                } else {
+                    // Create details section if it doesn't exist
+                    const newDetails = document.createElement('div');
+                    newDetails.className = 'event-details';
+                    newDetails.innerHTML = `
+                        <p>Event details will be provided soon.</p>
+                        <div class="event-meta">
+                            
+                        </div>
+                    `;
+                    parent.appendChild(newDetails);
+                }
+            });
+        });
+    </script>
+
+   
+
+
+<script>
+  document.getElementById("registrationForm").addEventListener("submit", function (event) {
+    event.preventDefault(); // Prevent default submission
+
+    // Optionally process the form data here (e.g., send to server)
+
+    // Reset the form
+    this.reset();
+
+    // Redirect after a short delay (optional, e.g., to show a success message)
+    setTimeout(() => {
+      window.location.href = "thank.html";
+    }, 500); // 0.5 second delay
+  });
+</script>
+</body>
+</html>
